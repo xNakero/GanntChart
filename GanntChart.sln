@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GanntChart", "GanntChart\GanntChart.csproj", "{215901C0-A141-48E5-8A6E-5B358B638C0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{215901C0-A141-48E5-8A6E-5B358B638C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{215901C0-A141-48E5-8A6E-5B358B638C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{215901C0-A141-48E5-8A6E-5B358B638C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{215901C0-A141-48E5-8A6E-5B358B638C0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F956A7D-8723-4291-8E9A-E4CC335D988B}
+	EndGlobalSection
+EndGlobal
