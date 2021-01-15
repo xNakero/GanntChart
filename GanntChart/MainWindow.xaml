@@ -5,18 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GanntChart"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1650" WindowStyle="ThreeDBorderWindow">
+        Title="Gantt" Height="900" Width="1650" WindowStyle="ThreeDBorderWindow" >
     <Grid Background="#FF1E2336">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="427*"/>
+            <ColumnDefinition Width="394*"/>
         </Grid.ColumnDefinitions>
-        <ToolBar Grid.Column="1" HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="1642" Grid.ColumnSpan="4" Background="#FF142D49">
-            <Button Content="Edit" Foreground="#FF6BD6B5"/>
-            <Button Content="Open" Foreground="#FF6BD6B5"/>
-            <Button Content="Save" Foreground="#FF6BD6B5"/>
-            <Button Content="Reset chart" Foreground="#FF6BD6B5"/>
-            <Button Content="Extract as png" Foreground="#FF6BD6B5"/>
+        <ToolBar HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="1642" Grid.ColumnSpan="2" Background="#FF142D49">
+            <Button Content="New" Click="NewButton_Click" Foreground="#FF6BD6B5"/>
+            <Button Content="Edit" Click="EditButton_Click" Foreground="#FF6BD6B5" Margin="0,0,0,5" VerticalAlignment="Bottom"/>
+            <Button Content="Open" Click="OpenButton_Click" Foreground="#FF6BD6B5"/>
+            <Button Content="Save" Click="SaveButton_Click" Foreground="#FF6BD6B5"/>
+            <Button Content="Reset chart" Click="ResetButton_Click" Foreground="#FF6BD6B5"/>
+            <Button Content="Extract as png" Click="ToPngButton_Click" Foreground="#FF6BD6B5"/>
         </ToolBar>
-        <Canvas Grid.Column="2" HorizontalAlignment="Center" Height="800" Margin="25,50,25,10" VerticalAlignment="Center" Width="1600" Grid.ColumnSpan="3" Background="White"/>
-
+        <Canvas HorizontalAlignment="Center" Height="800" Margin="21,54,21,15" VerticalAlignment="Center" Width="1600" Grid.ColumnSpan="2" Background="#FFE2BBBB"/>
     </Grid>
 </Window>

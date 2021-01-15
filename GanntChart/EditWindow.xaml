@@ -1,0 +1,36 @@
+﻿<Window x:Class="GanntChart.EditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GanntChart"
+        mc:Ignorable="d"
+        Title="EditWindow" Height="447.887" Width="827.867">
+    <Grid Background="#FF1E2336">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="725*"/>
+        </Grid.ColumnDefinitions>
+        <Button Name="AddButton" Content="Add activity" HorizontalAlignment="Left" Margin="185,341,0,0" VerticalAlignment="Top" Width="150" Height="61" Click="AddButton_Click" RenderTransformOrigin="0.501,0.883"/>
+        <Button Name="RemoveButton" Content="Remove activity" HorizontalAlignment="Left" Margin="617,341,0,0" VerticalAlignment="Top" Width="150" Height="61" Click="RemoveButton_Click"/>
+        <ListBox HorizontalAlignment="Left" Height="316" Margin="570,10,0,0" VerticalAlignment="Top" Width="240"/>
+        <TextBlock HorizontalAlignment="Left" Margin="19,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Foreground="White"/>
+        <Calendar Name="StartCalendar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,31,0,0"/>
+        <Calendar Name="EndCalendar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="306,31,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="91,10,0,0" TextWrapping="Wrap" Text="Start date" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="1.007,0.574"/>
+        <TextBlock HorizontalAlignment="Left" Margin="378,10,0,0" TextWrapping="Wrap" Text="End date" VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="73,204,0,0" TextWrapping="Wrap" Text="Hour" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="1.126,0.787"/>
+        <TextBlock HorizontalAlignment="Left" Margin="413,225,0,0" TextWrapping="Wrap" Text="Minute" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="1.081,0.492"/>
+        <TextBlock HorizontalAlignment="Left" Margin="341,207,0,0" TextWrapping="Wrap" Text="Hour" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.583,-0.316"/>
+        <TextBlock HorizontalAlignment="Left" Margin="141,204,0,0" TextWrapping="Wrap" Text="Minute" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="1.126,0.787"/>
+        <ComboBox Name="HourStart" HorizontalAlignment="Left" Margin="61,225,0,0" VerticalAlignment="Top" Width="39" Height="27" RenderTransformOrigin="0.133,-0.605" SelectionChanged="HourStart_SelectionChanged" />
+        <ComboBox Name="MinuteStart" HorizontalAlignment="Left" Margin="140,225,0,0" VerticalAlignment="Top" Width="39" Height="27" RenderTransformOrigin="0.52,-0.504" SelectionChanged="MinuteStart_SelectionChanged"/>
+        <ComboBox Name="HourEnd" HorizontalAlignment="Left" Margin="341,225,0,0" VerticalAlignment="Top" Width="39" Height="27" SelectionChanged="HourEnd_SelectionChanged"/>
+        <ComboBox Name="MinuteEnd" HorizontalAlignment="Left" Margin="412,225,0,0" VerticalAlignment="Top" Width="39" Height="27" RenderTransformOrigin="0.387,0.032" SelectionChanged="MinuteEnd_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="19,269,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="1.126,0.787"/>
+        <TextBlock HorizontalAlignment="Left" Margin="282,269,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="1.126,0.787"><Run Text="State"/><LineBreak/><Run/></TextBlock>
+        <ComboBox x:Name="State" HorizontalAlignment="Left" Margin="330,269,0,0" VerticalAlignment="Top" Width="155" Height="27" RenderTransformOrigin="0.52,-0.504" SelectionChanged="MinuteStart_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="413,204,0,0" TextWrapping="Wrap" Text="Minute" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="1.126,0.787"/>
+        <TextBox Name="Name" HorizontalAlignment="Left" Height="23" Margin="61,269,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="147" TextChanged="TextBox_TextChanged"/>
+
+    </Grid>
+</Window>
