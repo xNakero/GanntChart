@@ -17,6 +17,7 @@ namespace GanntChart
         private void NewButton_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("text");
+            Browser.Navigate(new System.Uri(@"D:\Studia\SEMESTR 5\dotNet\projekt - gannt chart\GanntChart\GanntChart\image.png"));
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -127,6 +128,7 @@ namespace GanntChart
             activity.State = State.SelectedItem.ToString();
             Debug.WriteLine(activity.ToString());
             Debug.WriteLine(activity.Name + activity.State + activity.StartDate + activity.EndDate);
+            Debug.WriteLine(activity.StartDate.ToString("yyyy-MM-dd HH':'mm':'ss"));
 
             StartCalendar.SelectedDates.Clear();
             EndCalendar.SelectedDates.Clear();

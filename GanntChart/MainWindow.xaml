@@ -18,7 +18,8 @@
             <Button Content="Save" Click="SaveButton_Click" Foreground="#FF6BD6B5"/>
             <Button Content="Reset chart" Click="ResetButton_Click" Foreground="#FF6BD6B5"/>
             <Button Content="Extract as png" Click="ToPngButton_Click" Foreground="#FF6BD6B5"/>
+            <Button Content="Open interactive" Click="ToPngButton_Click" Foreground="#FF6BD6B5"/>
         </ToolBar>
-        <Canvas HorizontalAlignment="Center" Height="800" Margin="21,54,21,15" VerticalAlignment="Center" Width="1600" Grid.ColumnSpan="2" Background="#FFE2BBBB"/>
+        <WebBrowser Name="Browser" HorizontalAlignment="Center" Height="800" Margin="21,54,21,15" VerticalAlignment="Center" Width="1600" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
