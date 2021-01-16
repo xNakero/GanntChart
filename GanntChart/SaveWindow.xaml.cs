@@ -1,6 +1,8 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +22,12 @@ namespace GanntChart
     /// </summary>
     public partial class SaveWindow : Window
     {
-        public SaveWindow()
+        private ChartData chartData;
+        private ChartParser chartParser = new ChartParser();
+
+        public SaveWindow(ChartData chartData)
         {
+            this.chartData = chartData;
             InitializeComponent();
         }
 
@@ -37,6 +43,24 @@ namespace GanntChart
             {
                 PathName.Text = dialog.FileName;
             }
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (PathName.Text.EndsWith(".csv"))
+            {
+                chartParser.toCsv(PathName.Text, chartData);
+                chartData.printAllData();
+            }
+            else if (PathName.Text.EndsWith(".json"))
+            {
+                //TODO json open
+            }
+            else
+            {
+                Debug.WriteLine("not a correct file type.");
+            }
+            PathName.Text = "";
         }
     }
 }

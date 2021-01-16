@@ -8,39 +8,37 @@ namespace GanntChart
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ChartData chartData;
+
         public MainWindow()
         {
             InitializeComponent();
-
+            this.chartData = new ChartData();
+           
         }
 
         private void NewButton_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("text");
-            Browser.Navigate(new System.Uri(@"D:\Studia\SEMESTR 5\dotNet\projekt - gannt chart\GanntChart\GanntChart\image.png"));
+            AskSaveWindow window = new AskSaveWindow(chartData);
+            window.Show();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            EditWindow window = new EditWindow();
-            window.Show();
+            EditWindow window = new EditWindow(chartData);
+            window.ShowDialog();
         }
 
         private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenWindow window = new OpenWindow();
-            window.Show();
+            OpenWindow window = new OpenWindow(chartData);
+            window.ShowDialog();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveWindow window = new SaveWindow();
-            window.Show();
-        }
-
-        private void ResetButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            SaveWindow window = new SaveWindow(chartData);
+            window.ShowDialog();
         }
 
         private void ToPngButton_Click(object sender, RoutedEventArgs e)

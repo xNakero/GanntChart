@@ -5,17 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GanntChart"
         mc:Ignorable="d"
-        Title="EditWindow" Height="447.887" Width="827.867">
-    <Grid Background="#FF1E2336">
+        Title="EditWindow" Height="450" Width="1100">
+    <Grid Background="#FF1E2336" Margin="0,0,-8,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="725*"/>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="17*"/>
         </Grid.ColumnDefinitions>
         <Button Name="AddButton" Content="Add activity" HorizontalAlignment="Left" Margin="185,341,0,0" VerticalAlignment="Top" Width="150" Height="61" Click="AddButton_Click" RenderTransformOrigin="0.501,0.883"/>
-        <Button Name="RemoveButton" Content="Remove activity" HorizontalAlignment="Left" Margin="617,341,0,0" VerticalAlignment="Top" Width="150" Height="61" Click="RemoveButton_Click"/>
-        <ListBox HorizontalAlignment="Left" Height="316" Margin="570,10,0,0" VerticalAlignment="Top" Width="240"/>
+        <Button Name="RemoveButton" Content="Remove activity" HorizontalAlignment="Left" Margin="739,341,0,0" VerticalAlignment="Top" Width="150" Height="61" Click="RemoveButton_Click"/>
+        <ListView Name="Activities" HorizontalAlignment="Left" Height="316" Margin="570,10,0,0" VerticalAlignment="Top" Width="500
+                  " SelectionChanged="Activities_SelectionChanged" Grid.ColumnSpan="2" ItemsSource="{Binding Activities}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Start Date" Width="150" DisplayMemberBinding="{Binding StartDate}"/>
+                    <GridViewColumn Header="End Date" Width="150" DisplayMemberBinding="{Binding EndDate}"/>
+                    <GridViewColumn Header="State" Width="100" DisplayMemberBinding="{Binding State}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
         <TextBlock HorizontalAlignment="Left" Margin="19,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Foreground="White"/>
-        <Calendar Name="StartCalendar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,31,0,0"/>
-        <Calendar Name="EndCalendar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="306,31,0,0"/>
+        <Calendar Name="StartCalendar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,31,0,0" SelectedDatesChanged="StartCalendar_OnSelectedDatesChanged"/>
+        <Calendar Name="EndCalendar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="306,31,0,0" SelectedDatesChanged="EndCalendar_OnSelectedDatesChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="91,10,0,0" TextWrapping="Wrap" Text="Start date" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="1.007,0.574"/>
         <TextBlock HorizontalAlignment="Left" Margin="378,10,0,0" TextWrapping="Wrap" Text="End date" VerticalAlignment="Top" Foreground="White"/>
         <TextBlock HorizontalAlignment="Left" Margin="73,204,0,0" TextWrapping="Wrap" Text="Hour" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="1.126,0.787"/>

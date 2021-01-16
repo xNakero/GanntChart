@@ -10,8 +10,12 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="143*"/>
         </Grid.ColumnDefinitions>
-        <Button Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="133,55,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
-        <Button Name="SearchButton" Content="" HorizontalAlignment="Left" Margin="331,22,0,0" VerticalAlignment="Top" Width="19" Height="19" Click="SearchButton_Click" RenderTransformOrigin="0.286,-1.855"/>
+        <Button Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="133,55,0,0" VerticalAlignment="Top" Width="90" Height="40" Click="SaveButton_Click"/>
+        <Button Name="SearchButton" Content="" HorizontalAlignment="Left" Margin="331,22,0,0" VerticalAlignment="Top" Width="19" Height="19" Click="SearchButton_Click" RenderTransformOrigin="0.286,-1.855">
+            <Button.Background>
+                <ImageBrush ImageSource="folder-icon.png"/>
+            </Button.Background>
+        </Button>
         <TextBox Name="PathName" HorizontalAlignment="Left" Height="19" Margin="10,22,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="308"/>
     </Grid>
 </Window>

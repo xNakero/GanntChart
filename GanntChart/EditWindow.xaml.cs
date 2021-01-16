@@ -21,11 +21,15 @@ namespace GanntChart
     /// </summary>
     public partial class EditWindow : Window
     {
-        public EditWindow()
+        private ChartData chartData;
+
+        public EditWindow(ChartData chartData)
         {
+            this.chartData = chartData;
             InitializeComponent();
             fillComboBox();
             setButtonsAtStart();
+            Activities.ItemsSource = chartData.GetActivities();
         }
 
         private void fillComboBox()
@@ -99,7 +103,6 @@ namespace GanntChart
         private void HourEnd_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             canStartBeUsed();
-
         }
 
         private void MinuteEnd_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -128,8 +131,7 @@ namespace GanntChart
             activity.State = State.SelectedItem.ToString();
             Debug.WriteLine(activity.ToString());
             Debug.WriteLine(activity.Name + activity.State + activity.StartDate + activity.EndDate);
-            Debug.WriteLine(activity.StartDate.ToString("yyyy-MM-dd HH':'mm':'ss"));
-
+            chartData.AddActivity(activity);
             StartCalendar.SelectedDates.Clear();
             EndCalendar.SelectedDates.Clear();
             HourStart.SelectedItem = null;
@@ -138,16 +140,38 @@ namespace GanntChart
             MinuteEnd.SelectedItem = null;
             Name.Text = null;
             State.SelectedItem = null;
+            Activities.Items.Refresh();
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Activity a = (Activity)Activities.SelectedItem;
+            Debug.WriteLine(a.ToString());
+            chartData.RemoveActivity(a);
+            Activities.Items.Refresh();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            canStartBeUsed();
+        }
 
+        private void EndCalendar_OnSelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            canStartBeUsed();
+        }
+
+        private void StartCalendar_OnSelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            canStartBeUsed();
+        }
+
+        private void Activities_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(Activities.SelectedItems.Count > 0)
+            {
+                RemoveButton.IsEnabled = true;    
+            }
         }
     }
 }

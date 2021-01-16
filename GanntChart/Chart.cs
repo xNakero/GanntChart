@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LINQtoCSV;
-using Microsoft.Scripting;
-using Microsoft.Scripting.Hosting;
 
 namespace GanntChart
 {
-    class Activity
+    public class Activity
     {
         [CsvColumn(FieldIndex = 1)]
         public string Name { get; set; }
@@ -35,55 +32,63 @@ namespace GanntChart
         }
 
         public Activity() { }
-       
+
+        public override string ToString()
+        {
+            string startDate = StartDate.ToString("yyyy-MM-dd HH':'mm':'ss", DateTimeFormatInfo.InvariantInfo);
+            string endDate = EndDate.ToString("yyyy-MM-dd HH':'mm':'ss", DateTimeFormatInfo.InvariantInfo);
+            return this.Name + ", " + startDate + ", " + endDate + ", " + this.State;
+        }
+
     }
 
-    class ChartData
+    public class ChartData
     {
-        private List<Activity> Activities { get; set; }
+        public ObservableCollection<Activity> activities { get; set; }
 
         public ChartData()
         {
-            Activities = new List<Activity>();
+            activities = new ObservableCollection<Activity>();
         }
 
-        public List<Activity> GetActivities()
+        public ObservableCollection<Activity> GetActivities()
         {
-            return Activities;
+            return activities;
         }
         public void AddActivity(Activity activity)
         {
-            Activities.Add(activity);
+            activities.Add(activity);
         }
 
-        public void addActivitiesList(List<Activity> list)
+        public void addActivitiesList(ObservableCollection<Activity> list)
         {
-            Activities = list;
+            activities = list;
         }
         public void RemoveActivity(Activity activity)
         {
-            Activities.RemoveAt(Activities.IndexOf(activity));
+            activities.RemoveAt(activities.IndexOf(activity));
         }
 
-        public void UpdateActivity(Activity activity, Activity updatedActivity)
+        public void RemoveAllActivity()
         {
-            activity.Name = updatedActivity.Name;
-            activity.StartDate = updatedActivity.StartDate;
-            activity.EndDate = updatedActivity.EndDate;
-            activity.State = updatedActivity.State;
+            activities.Clear();
         }
 
+        public void printAllData()
+        {
+            foreach(Activity a in activities)
+            {
+                Debug.WriteLine(a.Name + " " + a.StartDate + " " + a.EndDate + " " + a.State);
+            }
+        }
+        
     }
 
-    class ChartParser
+    public class ChartParser
     {
-        private ChartData chartData;
+        public ChartParser() { }
 
-        public ChartParser(ChartData chartData) {
-            this.chartData = chartData;
-        }
-
-        public void toCsv(string path)
+        public void toCsv(string path, ChartData chartData)
         {
             //TO DO 
             CsvFileDescription outputFileDescription = new CsvFileDescription
@@ -95,24 +100,33 @@ namespace GanntChart
             cc.Write(chartData.GetActivities(), path, outputFileDescription);
         }
 
-        public void fromCSV(string path)
+        public void fromCSV(string path, ChartData chartData)
         {
-            var list = File.ReadAllLines(path)
-                .Skip(1)
-                .Where(row => row.Length > 0)
-                .Select(ParseRow).ToList();
-            chartData.addActivitiesList(list);
+            if(File.Exists(path))
+            {
+                chartData.GetActivities().Clear();
+                var list = File.ReadAllLines(path)
+                    .Skip(1)
+                    .Where(row => row.Length > 0)
+                    .Select(ParseRow).ToList();
+                ObservableCollection<Activity> oc = new ObservableCollection<Activity>(list);
+                chartData.addActivitiesList(oc);
+            }
+            else
+            {
+                Debug.WriteLine("No such path");
+            }
         }
+
         private Activity ParseRow(string row)
         {
             var columns = row.Split(',');
             return new Activity(
                 columns[0],
-                DateTime.ParseExact(columns[1], "yyyy-MM-dd HH':'mm':'ss", CultureInfo.InvariantCulture),
-                DateTime.ParseExact(columns[1], "yyyy-MM-dd HH':'mm':'ss", CultureInfo.InvariantCulture),
+                DateTime.Parse(columns[1]),
+                DateTime.Parse(columns[2]),
                 columns[3]);
         }
-
        
     }
 }
