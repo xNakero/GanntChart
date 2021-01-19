@@ -22,15 +22,11 @@ using LINQtoCSV;
         [CsvColumn(FieldIndex = 3)]
         public DateTime EndDate { get; set; }
 
-        [CsvColumn(FieldIndex = 4)]
-        public string State { get; set; }
-
-        public Activity(string name, DateTime startDate, DateTime endDate, string state)
+        public Activity(string name, DateTime startDate, DateTime endDate)
         {
             Name = name;
             StartDate = startDate;
             EndDate = endDate;
-            State = state;
         }
 
         public Activity() { }
@@ -39,7 +35,7 @@ using LINQtoCSV;
         {
             string startDate = StartDate.ToString("yyyy-MM-dd HH':'mm':'ss", DateTimeFormatInfo.InvariantInfo);
             string endDate = EndDate.ToString("yyyy-MM-dd HH':'mm':'ss", DateTimeFormatInfo.InvariantInfo);
-            return this.Name + ", " + startDate + ", " + endDate + ", " + this.State;
+            return this.Name + ", " + startDate + ", " + endDate + ", ";
         }
 
     }
@@ -80,7 +76,7 @@ using LINQtoCSV;
         {
             foreach (Activity a in activities)
             {
-                Debug.WriteLine(a.Name + " " + a.StartDate + " " + a.EndDate + " " + a.State);
+                Debug.WriteLine(a.Name + " " + a.StartDate + " " + a.EndDate);
             }
         }
 
@@ -140,8 +136,7 @@ using LINQtoCSV;
             return new Activity(
                 columns[0],
                 DateTime.Parse(columns[1]),
-                DateTime.Parse(columns[2]),
-                columns[3]);
+                DateTime.Parse(columns[2]));
         }
 
     }

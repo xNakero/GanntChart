@@ -47,9 +47,6 @@ namespace GanntChart
                 MinuteStart.Items.Add(i);
                 MinuteEnd.Items.Add(i);
             }
-            State.Items.Add("Complete");
-            State.Items.Add("Incomplete");
-            State.Items.Add("Started");
         }
 
         private void setButtonsAtStart()
@@ -60,7 +57,7 @@ namespace GanntChart
 
         private void canStartBeUsed()
         {
-            if (StartCalendar.SelectedDate > EndCalendar.SelectedDate || Name.Text == "" || Name.Text == null || State.SelectedItem == null)
+            if (StartCalendar.SelectedDate > EndCalendar.SelectedDate || Name.Text == "" || Name.Text == null)
             {
                 AddButton.IsEnabled = false;
             } 
@@ -131,9 +128,8 @@ namespace GanntChart
             activity.Name = Name.Text;
             activity.StartDate = startDate;
             activity.EndDate = endDate;
-            activity.State = State.SelectedItem.ToString();
             Debug.WriteLine(activity.ToString());
-            Debug.WriteLine(activity.Name + activity.State + activity.StartDate + activity.EndDate);
+            Debug.WriteLine(activity.Name + activity.StartDate + activity.EndDate);
             chartData.AddActivity(activity);
             StartCalendar.SelectedDates.Clear();
             EndCalendar.SelectedDates.Clear();
@@ -142,7 +138,6 @@ namespace GanntChart
             MinuteStart.SelectedItem = null;
             MinuteEnd.SelectedItem = null;
             Name.Text = null;
-            State.SelectedItem = null;
             Activities.Items.Refresh();
             gantt.SetValues(chartData);
             mainWindow.FrameWithinGrid.Content = gantt;

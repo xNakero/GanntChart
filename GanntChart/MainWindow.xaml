@@ -5,17 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GanntChart"
         mc:Ignorable="d"
-        Title="Gantt" Height="900" Width="1650" WindowStyle="ThreeDBorderWindow" >
+        Title="Gantt" Height="900" Width="1650" ResizeMode="NoResize" WindowStyle="ThreeDBorderWindow" Icon="resources/main_icon.png" >
     <Grid Background="#FF1E2336">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="449*"/>
-            <RowDefinition Height="420*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="427*"/>
-            <ColumnDefinition Width="394*"/>
-        </Grid.ColumnDefinitions>
-        <ToolBar HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="1642" Grid.ColumnSpan="2" Background="#FF142D49">
+        <ToolBar HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="1650" Grid.ColumnSpan="2" Background="#FF142D49">
             <Button Content="New" Click="NewButton_Click" Foreground="#FF6BD6B5"/>
             <Button Content="Edit" Click="EditButton_Click" Foreground="#FF6BD6B5" Margin="0,0,0,5" VerticalAlignment="Bottom"/>
             <Button Content="Open" Click="OpenButton_Click" Foreground="#FF6BD6B5"/>

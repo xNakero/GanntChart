@@ -26,30 +26,35 @@ namespace GanntChart
         private void NewButton_Click(object sender, RoutedEventArgs e)
         {
             AskSaveWindow window = new AskSaveWindow(chartData);
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             window.Show();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             EditWindow window = new EditWindow(chartData, this, gantt);
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             window.ShowDialog();
         }
 
         private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
             OpenWindow window = new OpenWindow(chartData, this, gantt);
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             window.ShowDialog();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             SaveWindow window = new SaveWindow(chartData);
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             window.ShowDialog();
         }
 
         private void ToPngButton_Click(object sender, RoutedEventArgs e)
         {
             SavePngWindow window = new SavePngWindow(gantt);
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             window.ShowDialog();
         }
     }
