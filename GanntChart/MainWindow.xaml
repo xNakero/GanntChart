@@ -5,15 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GanntChart"
         mc:Ignorable="d"
-        Title="Gantt" Height="900" Width="1650" ResizeMode="NoResize" WindowStyle="ThreeDBorderWindow" Icon="resources/main_icon.png" >
+        Title="Gantt" Height="900" Width="1650" WindowStyle="ThreeDBorderWindow" Icon="resources/main_icon.png" >
     <Grid Background="#FF1E2336">
-        <ToolBar HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="1650" Grid.ColumnSpan="2" Background="#FF142D49">
+        <ToolBar HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="5000" Grid.ColumnSpan="2" Background="#FF142D49">
             <Button Content="New" Click="NewButton_Click" Foreground="#FF6BD6B5"/>
             <Button Content="Edit" Click="EditButton_Click" Foreground="#FF6BD6B5" Margin="0,0,0,5" VerticalAlignment="Bottom"/>
             <Button Content="Open" Click="OpenButton_Click" Foreground="#FF6BD6B5"/>
             <Button Content="Save" Click="SaveButton_Click" Foreground="#FF6BD6B5"/>
             <Button Content="Extract as png" Click="ToPngButton_Click" Foreground="#FF6BD6B5"/>
-            <Button Content="Open interactive" Click="ToPngButton_Click" Foreground="#FF6BD6B5"/>
         </ToolBar>
       <Frame Name="FrameWithinGrid" Grid.ColumnSpan="2" Margin="10,30,10,30" Grid.RowSpan="2" Background="#FFFF" >
       </Frame>
