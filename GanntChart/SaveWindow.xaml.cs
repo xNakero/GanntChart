@@ -37,7 +37,7 @@ namespace GanntChart
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.FileName = "chart.csv";
             dialog.DefaultExt = "csv files (*.csv)|*.csv";
-            dialog.Filter = "json files (*.json)|*.json|csv files (*.csv)|*.csv";
+            dialog.Filter = "csv files (*.csv)|*.csv";
 
             if (dialog.ShowDialog() == true)
             {
@@ -49,12 +49,8 @@ namespace GanntChart
         {
             if (PathName.Text.EndsWith(".csv"))
             {
-                chartParser.toCsv(PathName.Text, chartData);
+                chartParser.ToCsv(PathName.Text, chartData);
                 chartData.printAllData();
-            }
-            else if (PathName.Text.EndsWith(".json"))
-            {
-                //TODO json open
             }
             else
             {

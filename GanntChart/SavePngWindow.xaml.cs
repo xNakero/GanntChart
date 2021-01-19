@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,45 +17,37 @@ using System.Windows.Shapes;
 namespace GanntChart
 {
     /// <summary>
-    /// Logika interakcji dla klasy OpenWindow.xaml
+    /// Logika interakcji dla klasy SavePngWindow.xaml
     /// </summary>
-    public partial class OpenWindow : Window
+    public partial class SavePngWindow : Window
     {
-        private ChartData chartData;
         private ChartParser chartParser = new ChartParser();
-        private MainWindow mainWindow;
         private Wpf.CartesianChart.GanttChart.GanttExample gantt;
 
-        public OpenWindow(ChartData chartData, MainWindow mainWindow, Wpf.CartesianChart.GanttChart.GanttExample gantt)
+        public SavePngWindow(Wpf.CartesianChart.GanttChart.GanttExample gantt)
         {
             InitializeComponent();
-            this.chartData = chartData;
-            this.mainWindow = mainWindow;
             this.gantt = gantt;
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.FileName = "chart.csv";
-            dialog.DefaultExt = "csv files (*.csv)|*.csv";
-            dialog.Filter = "csv files (*.csv)|*.csv";
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.FileName = "image.png";
+            dialog.DefaultExt = "png files (*.png)|*.png";
+            dialog.Filter = "png files (*.png)|*.png";
+
             if (dialog.ShowDialog() == true)
             {
                 PathName.Text = dialog.FileName;
             }
         }
 
-        private void OpenButton_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (PathName.Text.EndsWith(".csv"))
+            if (PathName.Text.EndsWith(".png"))
             {
-                chartParser.FromCsv(PathName.Text, chartData);
-                chartData.printAllData();
-                gantt.SetValues(chartData);
-                mainWindow.FrameWithinGrid.Content = gantt;
-                mainWindow.FrameWithinGrid.Visibility = Visibility.Visible;
-                this.Close();
+                chartParser.ToPng(PathName.Text, gantt);
             }
             else
             {
@@ -64,5 +55,6 @@ namespace GanntChart
             }
             PathName.Text = "";
         }
+
     }
 }

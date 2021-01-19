@@ -49,16 +49,8 @@ namespace GanntChart
 
         private void ToPngButton_Click(object sender, RoutedEventArgs e)
         {
-            var encoder = new PngBitmapEncoder();
-            EncodeVisual(gantt, "gantt.png", encoder);
-        }
-        private static void EncodeVisual(FrameworkElement visual, string fileName, BitmapEncoder encoder)
-        {
-            var bitmap = new RenderTargetBitmap((int)visual.ActualWidth, (int)visual.ActualHeight, 96, 96, PixelFormats.Pbgra32);
-            bitmap.Render(visual);
-            var frame = BitmapFrame.Create(bitmap);
-            encoder.Frames.Add(frame);
-            using (var stream = File.Create(fileName)) encoder.Save(stream);
+            SavePngWindow window = new SavePngWindow(gantt);
+            window.ShowDialog();
         }
     }
 }

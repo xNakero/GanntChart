@@ -76,6 +76,9 @@
     <Compile Include="AskSaveWindow.xaml.cs">
       <DependentUpon>AskSaveWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SavePngWindow.xaml.cs">
+      <DependentUpon>SavePngWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SaveWindow.xaml.cs">
       <DependentUpon>SaveWindow.xaml</DependentUpon>
     </Compile>
@@ -107,6 +110,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="OpenWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SavePngWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,7 +5,11 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using LINQtoCSV;
+
 
     public class Activity
     {
@@ -21,7 +25,7 @@ using LINQtoCSV;
         [CsvColumn(FieldIndex = 4)]
         public string State { get; set; }
 
-        public Activity(string name, DateTime startDate, DateTime endDate, string state) 
+        public Activity(string name, DateTime startDate, DateTime endDate, string state)
         {
             Name = name;
             StartDate = startDate;
@@ -74,21 +78,20 @@ using LINQtoCSV;
 
         public void printAllData()
         {
-            foreach(Activity a in activities)
+            foreach (Activity a in activities)
             {
                 Debug.WriteLine(a.Name + " " + a.StartDate + " " + a.EndDate + " " + a.State);
             }
         }
-        
+
     }
 
     public class ChartParser
     {
         public ChartParser() { }
 
-        public void toCsv(string path, ChartData chartData)
+        public void ToCsv(string path, ChartData chartData)
         {
-            //TO DO 
             CsvFileDescription outputFileDescription = new CsvFileDescription
             {
                 SeparatorChar = ',',
@@ -98,9 +101,9 @@ using LINQtoCSV;
             cc.Write(chartData.GetActivities(), path, outputFileDescription);
         }
 
-        public void fromCSV(string path, ChartData chartData)
+        public void FromCsv(string path, ChartData chartData)
         {
-            if(File.Exists(path))
+            if (File.Exists(path))
             {
                 chartData.GetActivities().Clear();
                 var list = File.ReadAllLines(path)
@@ -116,6 +119,21 @@ using LINQtoCSV;
             }
         }
 
+        public void ToPng(string path, Wpf.CartesianChart.GanttChart.GanttExample gantt)
+        {
+            var encoder = new PngBitmapEncoder();
+            EncodeVisual(gantt, path, encoder);
+        }
+
+        private static void EncodeVisual(FrameworkElement visual, string fileName, BitmapEncoder encoder)
+        {
+            var bitmap = new RenderTargetBitmap((int)visual.ActualWidth, (int)visual.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+            bitmap.Render(visual);
+            var frame = BitmapFrame.Create(bitmap);
+            encoder.Frames.Add(frame);
+            using (var stream = File.Create(fileName)) encoder.Save(stream);
+        }
+
         private Activity ParseRow(string row)
         {
             var columns = row.Split(',');
@@ -125,6 +143,6 @@ using LINQtoCSV;
                 DateTime.Parse(columns[2]),
                 columns[3]);
         }
-       
+
     }
 
