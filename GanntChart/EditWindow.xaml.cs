@@ -22,10 +22,13 @@ namespace GanntChart
     public partial class EditWindow : Window
     {
         private ChartData chartData;
-
-        public EditWindow(ChartData chartData)
+        private MainWindow mainWindow;
+        private Wpf.CartesianChart.GanttChart.GanttExample gantt;
+        public EditWindow(ChartData chartData, MainWindow mainWindow, Wpf.CartesianChart.GanttChart.GanttExample gantt)
         {
             this.chartData = chartData;
+            this.mainWindow = mainWindow;
+            this.gantt = gantt;
             InitializeComponent();
             fillComboBox();
             setButtonsAtStart();
@@ -117,9 +120,9 @@ namespace GanntChart
             int startDay = Convert.ToInt32(StartCalendar.SelectedDate.Value.Day.ToString());
             int startHour = Convert.ToInt32(HourStart.SelectedItem);
             int startMinute = Convert.ToInt32(MinuteStart.SelectedItem);
-            int endYear = Convert.ToInt32(StartCalendar.SelectedDate.Value.Year.ToString());
-            int endMonth = Convert.ToInt32(StartCalendar.SelectedDate.Value.Month.ToString());
-            int endDay = Convert.ToInt32(StartCalendar.SelectedDate.Value.Day.ToString());
+            int endYear = Convert.ToInt32(EndCalendar.SelectedDate.Value.Year.ToString());
+            int endMonth = Convert.ToInt32(EndCalendar.SelectedDate.Value.Month.ToString());
+            int endDay = Convert.ToInt32(EndCalendar.SelectedDate.Value.Day.ToString());
             int endHour = Convert.ToInt32(HourEnd.SelectedItem);
             int endMinute = Convert.ToInt32(MinuteEnd.SelectedItem);
             DateTime startDate = new DateTime(startYear, startMonth, startDay, startHour, startMinute, 0);
@@ -141,6 +144,9 @@ namespace GanntChart
             Name.Text = null;
             State.SelectedItem = null;
             Activities.Items.Refresh();
+            gantt.SetValues(chartData);
+            mainWindow.FrameWithinGrid.Content = gantt;
+            mainWindow.FrameWithinGrid.Visibility = Visibility.Visible;
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
@@ -149,6 +155,8 @@ namespace GanntChart
             Debug.WriteLine(a.ToString());
             chartData.RemoveActivity(a);
             Activities.Items.Refresh();
+            gantt.SetValues(chartData);
+            
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

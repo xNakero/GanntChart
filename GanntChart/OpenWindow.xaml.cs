@@ -24,11 +24,15 @@ namespace GanntChart
     {
         private ChartData chartData;
         private ChartParser chartParser = new ChartParser();
+        private MainWindow mainWindow;
+        private Wpf.CartesianChart.GanttChart.GanttExample gantt;
 
-        public OpenWindow(ChartData chartData)
+        public OpenWindow(ChartData chartData, MainWindow mainWindow, Wpf.CartesianChart.GanttChart.GanttExample gantt)
         {
             InitializeComponent();
             this.chartData = chartData;
+            this.mainWindow = mainWindow;
+            this.gantt = gantt;
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -46,10 +50,16 @@ namespace GanntChart
 
         private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
-            if(PathName.Text.EndsWith(".csv")){
+            if (PathName.Text.EndsWith(".csv"))
+            {
                 chartParser.fromCSV(PathName.Text, chartData);
                 chartData.printAllData();
-            } 
+                gantt.SetValues(chartData);
+                mainWindow.FrameWithinGrid.Content = gantt;
+                mainWindow.FrameWithinGrid.Visibility = Visibility.Visible;
+                this.Close();
+                
+            }
             else if (PathName.Text.EndsWith(".json"))
             {
                 //TODO json open

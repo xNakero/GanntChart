@@ -7,8 +7,6 @@ using System.IO;
 using System.Linq;
 using LINQtoCSV;
 
-namespace GanntChart
-{
     public class Activity
     {
         [CsvColumn(FieldIndex = 1)]
@@ -129,4 +127,4 @@ namespace GanntChart
         }
        
     }
-}
+

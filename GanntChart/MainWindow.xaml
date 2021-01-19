@@ -23,6 +23,7 @@
             <Button Content="Extract as png" Click="ToPngButton_Click" Foreground="#FF6BD6B5"/>
             <Button Content="Open interactive" Click="ToPngButton_Click" Foreground="#FF6BD6B5"/>
         </ToolBar>
-        <WebBrowser Name="Browser" HorizontalAlignment="Center" Height="800" Margin="21,54,21,15" VerticalAlignment="Center" Width="1600" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-    </Grid>
+      <Frame Name="FrameWithinGrid" Grid.ColumnSpan="2" Margin="10,30,10,30" Grid.RowSpan="2" Background="#FFFF" >
+      </Frame>
+  </Grid>
 </Window>
