@@ -34,7 +34,7 @@ namespace GanntChart
         {
             EditWindow window = new EditWindow(chartData, this, gantt);
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            window.ShowDialog();
+            window.Show();
         }
 
         private void OpenButton_Click(object sender, RoutedEventArgs e)
