@@ -151,7 +151,7 @@ namespace GanntChart
             chartData.RemoveActivity(a);
             Activities.Items.Refresh();
             gantt.SetValues(chartData);
-            
+            mainWindow.FrameWithinGrid.Visibility = Visibility.Visible;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -25,7 +25,7 @@ namespace GanntChart
 
         private void NewButton_Click(object sender, RoutedEventArgs e)
         {
-            AskSaveWindow window = new AskSaveWindow(chartData);
+            AskSaveWindow window = new AskSaveWindow(chartData, this, gantt);
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             window.Show();
         }

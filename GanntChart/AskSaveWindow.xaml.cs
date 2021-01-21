@@ -21,9 +21,12 @@ namespace GanntChart
     {
         private SaveWindow saveWindow;
         private ChartData chartData;
-
-        public AskSaveWindow(ChartData chartData)
+        private MainWindow mainWindow;
+        private Wpf.CartesianChart.GanttChart.GanttExample gantt;
+        public AskSaveWindow(ChartData chartData, MainWindow mainWindow, Wpf.CartesianChart.GanttChart.GanttExample gantt)
         {
+            this.mainWindow = mainWindow;
+            this.gantt = gantt;
             saveWindow = new SaveWindow(chartData);
             this.chartData = chartData;
             InitializeComponent();
@@ -34,12 +37,16 @@ namespace GanntChart
             saveWindow.ShowDialog();
             this.Close();
             chartData.RemoveAllActivity();
+            gantt.SetValues(chartData);
+            mainWindow.FrameWithinGrid.Visibility = Visibility.Hidden;
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             chartData.RemoveAllActivity();
+            gantt.SetValues(chartData);
+            mainWindow.FrameWithinGrid.Visibility = Visibility.Hidden;
         }
 
         private void ReturnButton_Click(object sender, RoutedEventArgs e)

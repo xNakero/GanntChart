@@ -28,57 +28,18 @@ namespace Wpf.CartesianChart.GanttChart
         private double _to; 
         private ChartValues<GanttPoint> _values;
         
-
-
         public GanttExample()
         {
             InitializeComponent();
             Formatter = value => new DateTime((long)value).ToString("dd/MM HH:mm");
             _values = new ChartValues<GanttPoint>();
-            
-            /*           var now = DateTime.Now;
-
-                       _values = new ChartValues<GanttPoint>
-                       {
-                           new GanttPoint(now.Ticks, now.AddDays(2).Ticks),
-                           new GanttPoint(now.AddDays(1).Ticks, now.AddDays(3).Ticks),
-                           new GanttPoint(now.AddDays(3).Ticks, now.AddDays(5).Ticks),
-                           new GanttPoint(now.AddDays(5).Ticks, now.AddDays(8).Ticks),
-                           new GanttPoint(now.AddDays(6).Ticks, now.AddDays(10).Ticks),
-                           new GanttPoint(now.AddDays(7).Ticks, now.AddDays(14).Ticks),
-                           new GanttPoint(now.AddDays(9).Ticks, now.AddDays(12).Ticks),
-                           new GanttPoint(now.AddDays(9).Ticks, now.AddDays(14).Ticks),
-                           new GanttPoint(now.AddDays(10).Ticks, now.AddDays(11).Ticks),
-                           new GanttPoint(now.AddDays(12).Ticks, now.AddDays(16).Ticks),
-                           new GanttPoint(now.AddDays(15).Ticks, now.AddDays(17).Ticks),
-                           new GanttPoint(now.AddDays(18).Ticks, now.AddDays(19).Ticks)
-                       };
-
-                       Series = new SeriesCollection
-                       {
-                           new RowSeries
-                           {
-                               Values = _values,
-                               DataLabels = true
-                           }
-                       };
-                       Formatter = value => new DateTime((long)value).ToString("dd MMM");
-
-                       var labels = new List<string>();
-                       for (var i = 0; i < 12; i++)
-                           labels.Add("Task " + i);
-                       Labels = labels.ToArray();
-
-                       ResetZoomOnClick(null, null);
-
-                       DataContext = this;*/
         }
 
         public void SetValues(ChartData chartData)
         {
             this.InitializeComponent();
             _values = new ChartValues<GanttPoint>();
-            //_values.Clear();
+            _values.Clear();
             var labels = new List<string>();
             foreach (Activity activity in chartData.GetActivities())
             {
@@ -93,11 +54,11 @@ namespace Wpf.CartesianChart.GanttChart
                     DataLabels = true
                 }
             };
+            ResetZoomOnClick(null, null);
             Formatter = value => new DateTime((long)value).ToString("dd/MM HH:mm");
             Labels = labels.ToArray();
             DataContext = new SeriesViewModel();
             DataContext = this;
-            ResetZoomOnClick(null, null);
         }
 
         public SeriesCollection Series { get; set; }
@@ -110,6 +71,7 @@ namespace Wpf.CartesianChart.GanttChart
             set
             {
                 _from = value;
+                OnPropertyChanged("From");
             }
         }
 
@@ -119,6 +81,7 @@ namespace Wpf.CartesianChart.GanttChart
             set
             {
                 _to = value;
+                OnPropertyChanged("To");
             }
         }
 
