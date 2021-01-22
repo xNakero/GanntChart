@@ -57,7 +57,8 @@ namespace GanntChart
 
         private void canStartBeUsed()
         {
-            if (StartCalendar.SelectedDate > EndCalendar.SelectedDate || Name.Text == "" || Name.Text == null)
+            if (StartCalendar.SelectedDate > EndCalendar.SelectedDate || Name.Text == "" || Name.Text == null || StartCalendar.SelectedDate ==  null 
+                || EndCalendar.SelectedDate == null)
             {
                 AddButton.IsEnabled = false;
             } 
