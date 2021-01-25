@@ -57,7 +57,8 @@ namespace GanntChart
 
         private void canStartBeUsed()
         {
-            if (StartCalendar.SelectedDate > EndCalendar.SelectedDate || Name.Text == "" || Name.Text == null || StartCalendar.SelectedDate ==  null 
+            string split = Name.Text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
+            if (StartCalendar.SelectedDate > EndCalendar.SelectedDate || split == "" || split == null || StartCalendar.SelectedDate ==  null 
                 || EndCalendar.SelectedDate == null)
             {
                 AddButton.IsEnabled = false;
@@ -126,7 +127,7 @@ namespace GanntChart
             DateTime startDate = new DateTime(startYear, startMonth, startDay, startHour, startMinute, 0);
             DateTime endDate = new DateTime(endYear, endMonth, endDay, endHour, endMinute, 0);
             Activity activity = new Activity();
-            activity.Name = Name.Text;
+            activity.Name = Name.Text.Trim();
             activity.StartDate = startDate;
             activity.EndDate = endDate;
             Debug.WriteLine(activity.ToString());
