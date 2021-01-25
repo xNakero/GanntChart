@@ -154,6 +154,7 @@ namespace GanntChart
             Activities.Items.Refresh();
             gantt.SetValues(chartData);
             mainWindow.FrameWithinGrid.Visibility = Visibility.Visible;
+            RemoveButton.IsEnabled = false;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Are you sure?" ResizeMode="NoResize" Height="130" Width="360">
     <Grid Background="#FF1E2336">
-        <Button Name="YesButton" Content="Yes" HorizontalAlignment="Left" Margin="30,55.146,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="YesButton_Click" Grid.Row="1" Background="#FF636F8B"/>
-        <Button Name="NoButton" Content="No" HorizontalAlignment="Left" Margin="135,55.146,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="NoButton_Click" Grid.Row="1" Background="#FF636F8B"/>
-        <Button Name="ReturnButton" Content="Return" HorizontalAlignment="Left" Margin="250,55.146,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="3.003,0.265" Grid.Column="1" Click="ReturnButton_Click" Grid.Row="1" Background="#FF636F8B"/>
+        <Button Name="YesButton" Content="Yes" HorizontalAlignment="Left" Margin="30,55.146,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="YesButton_Click" Grid.Row="1" Background="#FFDDDDDD"/>
+        <Button Name="NoButton" Content="No" HorizontalAlignment="Left" Margin="135,55.146,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="NoButton_Click" Grid.Row="1" Background="#FFDDDDDD"/>
+        <Button Name="ReturnButton" Content="Return" HorizontalAlignment="Left" Margin="250,55.146,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="3.003,0.265" Grid.Column="1" Click="ReturnButton_Click" Grid.Row="1" Background="#FFDDDDDD"/>
         <Label Content="Do you want to save?" Grid.Column="1" HorizontalAlignment="Left" Margin="110,10.146,0,0" VerticalAlignment="Top" Grid.Row="1" Foreground="White"/>
 
     </Grid>
