@@ -37,7 +37,7 @@ namespace GanntChart
             saveWindow.ShowDialog();
             this.Close();
             chartData.RemoveAllActivity();
-            gantt.SetValues(chartData);
+            gantt.SetValues(chartData, "all");
             mainWindow.FrameWithinGrid.Visibility = Visibility.Hidden;
         }
 
@@ -45,7 +45,7 @@ namespace GanntChart
         {
             this.Close();
             chartData.RemoveAllActivity();
-            gantt.SetValues(chartData);
+            gantt.SetValues(chartData, "all");
             mainWindow.FrameWithinGrid.Visibility = Visibility.Hidden;
         }
 

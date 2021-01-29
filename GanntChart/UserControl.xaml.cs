@@ -14,8 +14,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LiveCharts;
+using LiveCharts.Configurations;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
+using Microsoft.Scripting.Utils;
 
 namespace Wpf.CartesianChart.GanttChart
 {
@@ -27,7 +29,8 @@ namespace Wpf.CartesianChart.GanttChart
         private double _from;
         private double _to; 
         private ChartValues<GanttPoint> _values;
-        
+        private ChartValues<GanttPoint> x;
+
         public GanttExample()
         {
             InitializeComponent();
@@ -35,25 +38,32 @@ namespace Wpf.CartesianChart.GanttChart
             _values = new ChartValues<GanttPoint>();
         }
 
-        public void SetValues(ChartData chartData)
+        public void SetValues(ChartData chartData, string state)
         {
             this.InitializeComponent();
             _values = new ChartValues<GanttPoint>();
             _values.Clear();
             var labels = new List<string>();
             foreach (Activity activity in chartData.GetActivities())
-            {
-                _values.Add(new GanttPoint(activity.StartDate.Ticks, activity.EndDate.Ticks));
-                labels.Add(activity.Name);
+            {   
+                if(activity.State == state || state == "all")
+                { 
+                    _values.Add(new GanttPoint(activity.StartDate.Ticks, activity.EndDate.Ticks));
+                    labels.Add(activity.Name);
+                }
             }
+
             Series = new SeriesCollection
             {
                 new RowSeries
                 {
                     Values = _values,
-                    DataLabels = true
+                    DataLabels = true,
+                    
                 }
             };
+            
+
             ResetZoomOnClick(null, null);
             Formatter = value => new DateTime((long)value).ToString("dd/MM HH:mm");
             Labels = labels.ToArray();
@@ -103,5 +113,7 @@ namespace Wpf.CartesianChart.GanttChart
             var handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
+
+
     }
 }

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GanntChart.App">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GanntChart.AskSaveWindow" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAEAAAAAAQABAAAAABAAAAAAgAAAAEAAAAAA=</HashCode>
+      <FileName>AskSaveWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GanntChart.EditWindow" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AQAgAAgAQACQABEASBBAAAAABQCAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>EditWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GanntChart.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAQCBAQAAAAAAAAAAAAEAAAAAAIAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GanntChart.OpenWindow" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAQABAQAAADAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OpenWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GanntChart.SavePngWindow" BaseTypeListCollapsed="true">
+    <Position X="6" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BgAAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SavePngWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GanntChart.SaveWindow" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BgAAAAAAAAAAAAAAAABAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SaveWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Activity">
+    <Position X="4" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAQgAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Chart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChartData">
+    <Position X="8.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAACAIAAAAAAAAEgAAAAAAAAAAAAAAIAAAgA=</HashCode>
+      <FileName>Chart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChartParser">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAEAAAAAAAAAAIAAEAACAAA=</HashCode>
+      <FileName>Chart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GanntChart.Properties.Resources">
+    <Position X="4" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GanntChart.Properties.Settings">
+    <Position X="2.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wpf.CartesianChart.GanttChart.GanttExample" BaseTypeListCollapsed="true">
+    <Position X="6" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAEAABAgAAIAAAAAAAggAIAAAAAAAgACAAAKE=</HashCode>
+      <FileName>UserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

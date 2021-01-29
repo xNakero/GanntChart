@@ -244,7 +244,7 @@ namespace GanntChart
             MinuteEnd.SelectedItem = null;
             Name.Text = null;
             Activities.Items.Refresh();
-            gantt.SetValues(chartData);
+            gantt.SetValues(chartData, "all");
             mainWindow.FrameWithinGrid.Content = gantt;
             mainWindow.FrameWithinGrid.Visibility = Visibility.Visible;
         }
@@ -255,7 +255,7 @@ namespace GanntChart
             Debug.WriteLine(a.ToString());
             chartData.RemoveActivity(a);
             Activities.Items.Refresh();
-            gantt.SetValues(chartData);
+            gantt.SetValues(chartData, "all");
             mainWindow.FrameWithinGrid.Visibility = Visibility.Visible;
             RemoveButton.IsEnabled = false;
         }
@@ -334,9 +334,9 @@ namespace GanntChart
             MinuteEnd.SelectedItem = null;
             Activities.SelectedItem = null;
             States.SelectedItem = null;
-            Name.Text = null;
-            Activities.Items.Refresh();
-            gantt.SetValues(chartData);
+            Name.Text = "";
+            Activities.Items.Refresh(); 
+            gantt.SetValues(chartData, "Started");
             mainWindow.FrameWithinGrid.Content = gantt;
             mainWindow.FrameWithinGrid.Visibility = Visibility.Visible;
             EditButton.IsEnabled = false;

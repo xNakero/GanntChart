@@ -53,7 +53,7 @@ namespace GanntChart
             {
                 chartParser.FromCsv(PathName.Text, chartData);
                 chartData.printAllData();
-                gantt.SetValues(chartData);
+                gantt.SetValues(chartData, "all");
                 mainWindow.FrameWithinGrid.Content = gantt;
                 mainWindow.FrameWithinGrid.Visibility = Visibility.Visible;
                 this.Close();

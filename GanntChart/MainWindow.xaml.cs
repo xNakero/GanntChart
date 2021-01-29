@@ -57,5 +57,26 @@ namespace GanntChart
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             window.ShowDialog();
         }
+
+        private void Show_Started_Click(object sender, RoutedEventArgs e)
+        {
+            gantt.SetValues(chartData, "Started");
+            StateLabel.Content = "Started";
+        }
+        private void Show_All_Click(object sender, RoutedEventArgs e)
+        {
+            gantt.SetValues(chartData, "all");
+            StateLabel.Content = "All";
+        }
+        private void Show_Not_Started_Click(object sender, RoutedEventArgs e)
+        {
+            gantt.SetValues(chartData, "Not started");
+            StateLabel.Content = "Not Started";
+        }
+        private void Show_Completed_Click(object sender, RoutedEventArgs e)
+        {
+            gantt.SetValues(chartData, "Completed");
+            StateLabel.Content = "Completed";
+        }
     }
 }
