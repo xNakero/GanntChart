@@ -21,12 +21,17 @@ using LINQtoCSV;
 
         [CsvColumn(FieldIndex = 3)]
         public DateTime EndDate { get; set; }
+        
+        [CsvColumn(FieldIndex = 4)]
+        public string State { get; set; }
 
-        public Activity(string name, DateTime startDate, DateTime endDate)
+
+        public Activity(string name, DateTime startDate, DateTime endDate, string state)
         {
             Name = name;
             StartDate = startDate;
             EndDate = endDate;
+            State = state;
         }
 
         public Activity() { }
@@ -35,9 +40,51 @@ using LINQtoCSV;
         {
             string startDate = StartDate.ToString("yyyy-MM-dd HH':'mm':'ss", DateTimeFormatInfo.InvariantInfo);
             string endDate = EndDate.ToString("yyyy-MM-dd HH':'mm':'ss", DateTimeFormatInfo.InvariantInfo);
-            return this.Name + ", " + startDate + ", " + endDate + ", ";
+            return this.Name + ", " + startDate + ", " + endDate + ", " + "," + this.State;
         }
 
+    }
+
+    public class ActivityBuilder 
+    {
+        private Activity activity = new Activity();
+
+        public ActivityBuilder()
+        {
+            activity.State = "";
+        }
+
+        public ActivityBuilder(Activity activity)
+        {
+            this.activity = activity;
+        }
+
+        public Activity Build() => activity;
+
+        public ActivityBuilder SetName(string name)
+        {
+            activity.Name = name;
+            return this;
+        }   
+    
+        public ActivityBuilder SetStartDate(DateTime startDate)
+        {
+            activity.StartDate = startDate;
+            return this;
+        }
+
+        public ActivityBuilder SetEndDate(DateTime endDate)
+        {
+            activity.EndDate = endDate;
+            return this;
+        }
+
+        public ActivityBuilder SetState(string state)
+        {
+            activity.State = state;
+            return this;
+        }
+        
     }
 
     public class ChartData
@@ -77,6 +124,15 @@ using LINQtoCSV;
             foreach (Activity a in activities)
             {
                 Debug.WriteLine(a.Name + " " + a.StartDate + " " + a.EndDate);
+            }
+        }
+
+        public void ReplaceActivity(Activity oldActivity, Activity newActivity)
+        {
+        if (activities.Contains(oldActivity))
+            {
+                int index = activities.IndexOf(oldActivity);
+                activities[index] = newActivity;
             }
         }
 
@@ -136,7 +192,8 @@ using LINQtoCSV;
             return new Activity(
                 columns[0],
                 DateTime.Parse(columns[1]),
-                DateTime.Parse(columns[2]));
+                DateTime.Parse(columns[2]),
+                columns[3]);
         }
 
     }

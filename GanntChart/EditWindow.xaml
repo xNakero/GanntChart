@@ -5,17 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GanntChart"
         mc:Ignorable="d"
-        Title="EditWindow" Height="450" Width="1020" ResizeMode="NoResize" Icon="resources/main_icon.png">
+        Title="EditWindow" Height="450" Width="1120" ResizeMode="NoResize" Icon="resources/main_icon.png">
     <Grid Background="#FF1E2336" Margin="0,0,-8,0">
         <Button Name="AddButton" Content="Add activity" HorizontalAlignment="Left" Margin="200,340,0,0" VerticalAlignment="Top" Width="150" Height="60" Click="AddButton_Click" RenderTransformOrigin="0.501,0.883"/>
-        <Button Name="RemoveButton" Content="Remove activity" HorizontalAlignment="Left" Margin="675,340,0,0" VerticalAlignment="Top" Width="150" Height="60" Click="RemoveButton_Click"/>
-        <ListView Name="Activities" HorizontalAlignment="Left" Height="316" Margin="550,10,0,0" VerticalAlignment="Top" Width="400
+        <Button Name="RemoveButton" Content="Remove activity" HorizontalAlignment="Left" Margin="725,340,0,0" VerticalAlignment="Top" Width="150" Height="60" Click="RemoveButton_Click"/>
+        <Button Name="EditButton" Content="Edit activity" HorizontalAlignment="Left" Margin="462,340,0,0" VerticalAlignment="Top" Width="150" Height="60" Click="EditButton_Click"/>
+        <ListView Name="Activities" HorizontalAlignment="Left" Height="316" Margin="550,10,0,0" VerticalAlignment="Top" Width="500
                   " SelectionChanged="Activities_SelectionChanged" Grid.ColumnSpan="2" ItemsSource="{Binding Activities}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Name}"/>
                     <GridViewColumn Header="Start Date" Width="150" DisplayMemberBinding="{Binding StartDate}"/>
                     <GridViewColumn Header="End Date" Width="150" DisplayMemberBinding="{Binding EndDate}"/>
+                    <GridViewColumn Header="State" Width="100" DisplayMemberBinding="{Binding State}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -31,8 +33,9 @@
         <ComboBox Name="MinuteStart" HorizontalAlignment="Left" Margin="160,225,0,0" VerticalAlignment="Top" Width="40" Height="30" RenderTransformOrigin="0.52,-0.504" SelectionChanged="MinuteStart_SelectionChanged"/>
         <ComboBox Name="HourEnd" HorizontalAlignment="Left" Margin="350,225,0,0" VerticalAlignment="Top" Width="40" Height="30" SelectionChanged="HourEnd_SelectionChanged"/>
         <ComboBox Name="MinuteEnd" HorizontalAlignment="Left" Margin="430,225,0,0" VerticalAlignment="Top" Width="40" Height="30" RenderTransformOrigin="0.387,0.032" SelectionChanged="MinuteEnd_SelectionChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="85,292,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Foreground="White" Height="20"/>
-        <TextBox Name="Name" HorizontalAlignment="Left" Height="20" Margin="125,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" TextChanged="TextBox_TextChanged"/>
-
+        <TextBlock HorizontalAlignment="Left" Margin="190,280,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Foreground="White" Height="20"/>
+        <TextBox Name="Name" HorizontalAlignment="Left" Height="20" Margin="60,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" TextChanged="TextBox_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="425,280,0,0" TextWrapping="Wrap" Text="State" VerticalAlignment="Top" Foreground="White" Height="20"/>
+        <ComboBox Name="States" HorizontalAlignment="Left" Margin="385,298,0,0" VerticalAlignment="Top" Width="110" SelectionChanged="States_SelectionChanged"/>
     </Grid>
 </Window>
